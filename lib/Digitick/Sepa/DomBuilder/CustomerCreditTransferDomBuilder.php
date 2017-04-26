@@ -113,7 +113,9 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
 
         $debtorAgent = $this->createElement('DbtrAgt');
         $financialInstitutionId = $this->createElement('FinInstnId');
-        $financialInstitutionId->appendChild($this->createElement('BIC', $paymentInformation->getOriginAgentBIC()));
+        if($paymentInformation->getOriginAgentBIC()){
+            $financialInstitutionId->appendChild($this->createElement('BIC', $paymentInformation->getOriginAgentBIC()));
+        }
         $debtorAgent->appendChild($financialInstitutionId);
         $this->currentPayment->appendChild($debtorAgent);
 
@@ -154,7 +156,9 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         if ($transactionInformation->getBic()) {
             $creditorAgent = $this->createElement('CdtrAgt');
             $financialInstitution = $this->createElement('FinInstnId');
-            $financialInstitution->appendChild($this->createElement('BIC', $transactionInformation->getBic()));
+            if($transactionInformation->getBic()){
+                $financialInstitution->appendChild($this->createElement('BIC', $transactionInformation->getBic()));
+            }
             $creditorAgent->appendChild($financialInstitution);
             $CdtTrfTxInf->appendChild($creditorAgent);
         }

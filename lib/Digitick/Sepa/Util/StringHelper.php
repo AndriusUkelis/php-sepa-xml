@@ -30,6 +30,7 @@ class StringHelper
      */
     public static function sanitizeString($inputString)
     {
+        return $inputString; // No string sanitizing
         $map = array(
             // German
             'Ä' => 'Ae', 'Ö' => 'Oe', 'Ü' => 'Ue', 'ä' => 'ae', 'ö' => 'oe', 'ü' => 'ue', 'ß' => 'ss',
